@@ -1,0 +1,40 @@
+[app]
+# (str) Title of your application
+title = Mobile Inventory Tracker
+
+# (str) Package name
+package.name = mobileinventorytracker
+
+# (str) Package domain (needed for android/ios packaging)
+package.domain = org.example
+
+# (str) Source code where the main.py file is located
+source.dir = .
+source.include_exts = py,png,jpg,jpeg,kv,txt
+
+# (str) Application versioning
+version = 1.0
+version.code = 1
+
+# (list) Application requirements
+requirements = python3,kivy,sqlite3
+
+# (str) Supported orientation
+orientation = portrait
+
+# (list) Android architectures to build for
+android.arch = arm64-v8a
+
+# (list) Permissions
+android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,MANAGE_EXTERNAL_STORAGE
+
+# (int) Android API to use
+android.api = 33
+android.minapi = 21
+
+# (str) Package domain for release build; keep default if unsure
+# (str) Android entry point, default is ok
+
+[buildozer]
+log_level = 2
+warn_on_root = 1
