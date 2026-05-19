@@ -3,21 +3,25 @@ on: [push, workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v4
+    runs-on: ubuntu-22.04
+    container:
+      image: kivy/buildozer:latest
+      options: --user root
 
-      - name: Get Buildozer Action
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
-        with:
-          buildozer_version: stable
-          command: buildozer android debug
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build APK with Buildozer
+        run: |
+          # Set safe permissions for the shared directory
+          git config --global --add safe.directory /home/runner/work/mobile-tracker/mobile-tracker
+          # Build the android debug package
+          buildozer android debug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
           
