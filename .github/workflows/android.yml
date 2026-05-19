@@ -14,10 +14,14 @@ jobs:
 
       - name: Build APK with Buildozer
         env:
-          # This forces Buildozer to skip the manual [y/n] prompt
           BUILDOZER_WARN_ON_ROOT: 0
         run: |
           git config --global --add safe.directory /home/runner/work/mobile-tracker/mobile-tracker
+          
+          # Automatically accept all Android SDK licenses before running the build
+          mkdir -p /github/home/.buildozer/android/platform/android-sdk/licenses
+          echo -e "\n244d24e218aa67468704e17173337c3402073a26\n28a217817531bbde58e6c21086c5f6f84643d811\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb74bf62d5050354f98e\ne6b7c2de3fa425235a12b858b2103a443d2ff080\n84813038d613e424d982ff25484a6c52a37e4e90" > /github/home/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          
           buildozer android debug
 
       - name: Upload APK Artifact
@@ -25,4 +29,3 @@ jobs:
         with:
           name: package
           path: bin/*.apk
-          
