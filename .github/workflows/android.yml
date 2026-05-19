@@ -13,10 +13,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build APK with Buildozer
+        env:
+          # This forces Buildozer to skip the manual [y/n] prompt
+          BUILDOZER_WARN_ON_ROOT: 0
         run: |
-          # Set safe permissions for the shared directory
           git config --global --add safe.directory /home/runner/work/mobile-tracker/mobile-tracker
-          # Build the android debug package
           buildozer android debug
 
       - name: Upload APK Artifact
