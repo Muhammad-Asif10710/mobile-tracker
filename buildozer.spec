@@ -22,8 +22,8 @@ requirements = python3,kivy,sqlite3
 # (str) Supported orientation
 orientation = portrait
 
-# (list) Android architectures to build for
-android.arch = arm64-v8a
+# (list) Android architectures to build for (Fixed typo here: added 's')
+android.archs = arm64-v8a
 
 # (list) Permissions
 android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,MANAGE_EXTERNAL_STORAGE
@@ -32,8 +32,8 @@ android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,MANAGE_EXTERN
 android.api = 33
 android.minapi = 21
 
-# (str) Package domain for release build; keep default if unsure
-# (str) Android entry point, default is ok
+# (bool) Automatically accept SDK licenses
+android.accept_sdk_license = True
 
 [buildozer]
 log_level = 2
