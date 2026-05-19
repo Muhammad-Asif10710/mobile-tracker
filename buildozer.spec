@@ -31,6 +31,11 @@ android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,MANAGE_EXTERN
 # (int) Android API to use
 android.api = 33
 android.minapi = 21
+# (str) Android NDK version to use
+android.ndk = 25b
+
+# (str) Android SDK build-tools version to use
+android.build_tools_version = 33.0.0
 
 # (bool) Automatically accept SDK licenses
 android.accept_sdk_license = True
